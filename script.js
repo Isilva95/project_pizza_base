@@ -3,7 +3,7 @@ const c = (el) => document.querySelector(el);
 // Retorna um array com os items que foi encontrado.
 const cs = (el) => document.querySelectorAll(el);
 
-// Estou mapenado a lista de produtos.
+// Estou mapeando a lista de produtos.
 pizzaJson.map((item, index)=> {
   // Aqui estou clonando meu .pizza-item.
   let pizzaItem = c('.models .pizza-item').cloneNode(true);

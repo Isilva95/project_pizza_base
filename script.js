@@ -64,3 +64,21 @@ function closeModal() {
 cs('.pizzaInfo--cancelMobileButton, .pizzaInfo--cancelButton').forEach((item) => {
   item.addEventListener('click', closeModal);
 });
+// Aqui é a parte de aumetar e diminuir a quantidade do produto.
+c('.pizzaInfo--qtmenos').addEventListener('click',() => {
+  if(modalQt > 1) {
+    modalQt--;
+    c('.pizzaInfo--qt').innerHTML = modalQt;
+  }
+});
+c('.pizzaInfo--qtmais').addEventListener('click',() => {
+  modalQt++;
+  c('.pizzaInfo--qt').innerHTML = modalQt
+});
+// Aqui é a parte de selecionar o tamanho do produto.
+cs('.pizzaInfo--size').forEach((size, sizeIndex) => {
+  size.addEventListener('click',(e) => {
+    c('.pizzaInfo--size.selected').classList.remove('selected');
+    size.classList.add('selected');
+  });
+});

@@ -89,11 +89,24 @@ cs('.pizzaInfo--size').forEach((size, sizeIndex) => {
 c('.pizzaInfo--addButton').addEventListener('click',() => {
   let size = parseInt(c('.pizzaInfo--size.selected').getAttribute('data-key'));
 
-  cart.push({
-    id:pizzaJson[modalKey].id,
-    size,
-    qt:modalQt
-  });
+  // Aqui vamos identificar as informações do produto antes de adicionar no carrinho.
+  let identifier = pizzaJson[modalKey].id + '@' + size;
+
+  // Essa é uma verificação se o produto já esta adicionado no carrinho.
+  let key = cart.findIndex((item) => item.identifier == identifier);
+
+  // Aqui é uma condição de aumentar a quantidade de um produto que já esteja no carrinho ou não.
+  if(key > -1) {
+    cart[key].qt += modalQt;
+  } else {
+    cart.push({
+      identifier,
+      id:pizzaJson[modalKey].id,
+      size,
+      qt:modalQt
+    });
+  }
+
 
   closeModal();
 });
